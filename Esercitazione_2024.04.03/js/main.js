@@ -1,0 +1,11 @@
+let num1 = 5;
+let num2 = 7;
+console.log("il valore della variabile num1 è " + num1);
+console.log("il valore della variabile num2 è " + num2);
+let stringa = "questa è una stringa";
+console.log("il valore della variabile stringa è ''" + stringa + "''");
+stringa = "questa stringa è stata modificata";
+console.log("il valore della variabile stringa modificata è ''" + stringa + "''");
+const PIGRECO = 3.14;
+console.log("il valore di PiGRECO è " + PIGRECO);
+PIGRECO = 5;
