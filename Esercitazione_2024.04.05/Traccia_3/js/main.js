@@ -1,5 +1,5 @@
-let num1 = parseInt(prompt());
-let num2 = parseInt(prompt());
+let num1 = parseInt(prompt("Iserisci il primo numero"));
+let num2 = parseInt(prompt("Inserisci il secondo numero"));
 let somma = num1 + num2;
 let sottrazione = num1 - num2;
 let moltiplicazione = num1 * num2;
