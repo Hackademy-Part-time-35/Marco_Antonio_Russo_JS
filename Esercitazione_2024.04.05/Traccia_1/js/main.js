@@ -6,3 +6,5 @@ let num5 = 47;
 let somma = num1 + num2 + num3 + num4 + num5;
 let media = somma / 5;
 console.log(`La somma tra i numeri equivale a ${somma} e la media equivale a ${media}`);
+
+// molto bene Marco

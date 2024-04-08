@@ -1,3 +1,5 @@
+// Bene
+// N.B.: non hai inserito il testo nella finestra del prompt() il che non comunicherebbe all'utente che cosa deve inserire
 let num1 = parseInt(prompt());
 let num2 = parseInt(prompt());
 let somma = num1 + num2;
