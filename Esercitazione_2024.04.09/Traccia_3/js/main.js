@@ -11,7 +11,7 @@ if(0 <= vote && vote <= 30 ){
         console.log("distinto");
     }else if(vote >= 27 && vote <= 29){
         console.log("ottimo");
-    }else if(vote=30){
+    }else if(vote==30){
         console.log("eccellente");
     }
     
