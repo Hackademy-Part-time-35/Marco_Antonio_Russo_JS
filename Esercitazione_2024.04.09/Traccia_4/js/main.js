@@ -1,4 +1,4 @@
-let temperature = prompt("Inserisci la temperatura");
+let temperature = parseInt(prompt("Inserisci la temperatura"));
 
 
 if (temperature < -10){
