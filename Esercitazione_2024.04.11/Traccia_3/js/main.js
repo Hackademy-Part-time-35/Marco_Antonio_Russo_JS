@@ -1,3 +1,4 @@
+// Grande Marco, mi fa piacere che hai approfondito, scegliendo una strada specifica
 let choise;
 // while (true){
 setInterval(() => { //Ho cercato soluzioni per creare un delay fra un input e l'altro
