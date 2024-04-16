@@ -1,3 +1,6 @@
+
+// ottimo lavoro
+
 let array_1 = [
 
     ['un', 'per', 'incatenarli.'],
