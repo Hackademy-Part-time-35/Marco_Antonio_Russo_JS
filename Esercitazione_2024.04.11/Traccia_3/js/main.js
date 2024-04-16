@@ -14,4 +14,4 @@ setInterval(() => { //Ho cercato soluzioni per creare un delay fra un input e l'
             console.log("È stata selezionata birra...erogazione in corso");
             break;
     }
-}, 2000)
+}, 3000)
