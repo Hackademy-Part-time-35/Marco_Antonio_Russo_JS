@@ -14,7 +14,7 @@ function cifre(n){
         console.log("Il numero ha 3 cifre");
     }else if (n<10000){
         console.log("Il numero ha 4 cifre");
-    }else if (n>=10000 || n <=-10000){
+    }else{
         console.log("Il numero ha troppe cifre");
     }
 }
