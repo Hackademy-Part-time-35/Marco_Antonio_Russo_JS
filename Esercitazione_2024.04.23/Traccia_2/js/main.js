@@ -42,19 +42,20 @@ let agenda = {
     },
     
     modifica_contatto: function(contatto_da_modificare, change_nome_contatto, change_telefono){
+        
         let index_contatto = this.cerca_contatto(contatto_da_modificare);
         this.contatti[index_contatto] = {nome: change_nome_contatto, telefono: change_telefono};
     },
     
     cerca_contatto: function(nome_contatto){
-        
-        let index_contatto, i;
-        for(i = 0; i < this.contatti.length; i++){
-            if(this.contatti[i].nome === nome_contatto){
-                index_contatto = i;
+     
+        let index_contatto;
+        this.contatti.forEach((value,index) => {
+            if(this.contatti[index].nome === nome_contatto){
+                index_contatto = index;
             }
-        };
-        
+        });
+
         if(index_contatto === undefined){
             console.log("Contatto non presente in agenda");
         }else{
