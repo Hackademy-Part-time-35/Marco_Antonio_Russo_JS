@@ -80,3 +80,5 @@ agenda.mostra_contatti();
 
 agenda.modifica_contatto("Manuel", "Garcia", "3541690587")  //Modifica il contatto Manuel in Garcia e cambia il numero di telefono
 agenda.mostra_contatti();
+
+//Non ho inserito prompt() per una maggiore lettura dell'ispeziona elemento su browser
