@@ -1,3 +1,5 @@
+// Bene Marco
+// Per uscire dal ciclo FOR puoi anche usare break, comunque mi piace l'idea di uscire dal for come hai fatto tu
 let number = Math.floor(Math.random()*100 +1);
 
 let scelta = parseInt(prompt("Indovina il numero!"));

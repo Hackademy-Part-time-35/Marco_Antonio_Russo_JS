@@ -1,3 +1,5 @@
+// bene
+// ottimo lavoro, soprattutto aver richiamato un metodo dentro un altro (mi riferisco a mostra_singolo_contatto())
 let agenda = {
     contatti: [
         {
