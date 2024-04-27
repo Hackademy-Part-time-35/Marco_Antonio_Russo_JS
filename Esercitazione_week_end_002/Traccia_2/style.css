@@ -6,24 +6,26 @@
 }
 
 
-body{
+.container{
     display: flex;
 
-    height: 100svh;
 }
 
 main{
-    width: 50vw;
     
+    height: 100vh;
+    width: 50vw;
+
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    gap: 2rem;
+    gap: 1.5rem;
 
     padding-inline: 5rem;
 
     border-right: 2px dotted black;
+    overflow-y: scroll;
 }
 
 aside{
@@ -48,5 +50,6 @@ time{
     font-style: italic;
     align-self: end;
     color: rgb(39, 39, 39);
+    margin-bottom: 3rem;
 }
 

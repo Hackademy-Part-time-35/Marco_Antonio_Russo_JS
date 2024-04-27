@@ -2,20 +2,22 @@ let input_titolo = document.querySelector("#titolo-input");
 let input_paragrafo = document.querySelector("#paragrafo-input");
 let h1 = document.querySelector("h1");
 let p = document.querySelector("p");
-let time = document.querySelector("time");
+// let time = document.querySelector("time");
 let send = document.querySelector("button");
-
+let main = document.querySelector("main");
 
 
 send.addEventListener("click", function(){
-    let date = new Date();
-
+    
     if (input_titolo.value == "" || input_paragrafo.value == ""){
         alert("Riempire entrambi i campi prima di inviare l'articolo")
     }else{
-        h1.innerHTML = input_titolo.value;
-        p.innerHTML = input_paragrafo.value;
-        time.innerHTML = calcolaData(date);
+        // h1.innerHTML = input_titolo.value;
+        // p.innerHTML = input_paragrafo.value;
+        // time.innerHTML = calcolaData(date);
+
+        addElement(input_titolo.value,input_paragrafo.value)
+        
         
         input_titolo.value = "";
         input_paragrafo.value = "" ;
@@ -23,7 +25,31 @@ send.addEventListener("click", function(){
 });
 
 
+function addElement(input_h2, input_p){
+    let new_h2 = document.createElement("h2");
+    let new_p = document.createElement("p");
+    let time = document.createElement("time");
+    let date = new Date();
+    
+    new_h2.innerHTML = input_h2;
+    new_p.innerHTML = input_p;
+    time.innerHTML = calcolaData(date);
 
+
+    
+        // main.appendChild(new_h2)
+        // main.appendChild(new_p)
+        // main.appendChild(time)
+    
+
+    console.log(new_h2);
+
+    main.insertAdjacentElement("afterbegin", time);
+    main.insertAdjacentElement("afterbegin", new_p);
+    main.insertAdjacentElement("afterbegin", new_h2);
+
+
+};
 
 
 function calcolaData(date){
