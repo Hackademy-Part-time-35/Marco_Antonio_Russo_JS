@@ -1,3 +1,5 @@
+// Benissimo
+// prova a fare una implementazione per confrontare i due array combinando i metodi .filter() e .includes(), quando devi cercare i numeri indovinati
 function generateUniqueArray(){//Genera un array di numeri casuali non ripeturi
     let unique_array=[];
     for(let i=0; i<10; i++){

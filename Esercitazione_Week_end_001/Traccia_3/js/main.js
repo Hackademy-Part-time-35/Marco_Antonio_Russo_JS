@@ -1,3 +1,6 @@
+// Benissimo Marco
+// Vedo che ti sei divertito a creare uno script fatto molto bene
+// Continua così!
 // Dichiarazione funzioni di conversione
 
 function convToEuro(valuta){

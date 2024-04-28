@@ -1,3 +1,4 @@
+// bene
 let persona = {
     nome: "Marco Antonio",
     cognome: "Russo",
