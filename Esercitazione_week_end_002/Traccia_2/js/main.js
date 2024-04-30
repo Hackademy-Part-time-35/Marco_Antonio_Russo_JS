@@ -1,3 +1,9 @@
+// MOLTO MOLTO bene, Marco
+// Consiglio: avresti potuto ottenere il nome del mese in italiano in questo modo:
+/*
+let data = new Date();
+let mese = new Intl.DateTimeFormat('it-IT', { month: 'long' }).format(data);
+*/
 let input_titolo = document.querySelector("#titolo-input");
 let input_paragrafo = document.querySelector("#paragrafo-input");
 let h1 = document.querySelector("h1");

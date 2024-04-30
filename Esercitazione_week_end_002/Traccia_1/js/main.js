@@ -1,3 +1,8 @@
+// Che dire Marco, complimenti
+// ho apprezzato molto sia lato JS che lato CSS
+// Continua così
+// Solo una cosa: forse sarebbe stato più comodo, anche nella lettura del codice, assegnare a 3 variabili il numero casuale che ti permette di cambaire il colori
+
 let button_1 = document.querySelector("#button_1");
 let button_2 = document.querySelector("#button_2");
 let button_3 = document.querySelector("#button_3");
