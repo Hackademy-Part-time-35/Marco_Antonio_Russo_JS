@@ -1,0 +1,15 @@
+#elenco_contatti{
+    text-transform: capitalize;
+}
+
+.custom-bg-primary{
+    background-color: #5b6268;
+}
+.custom-bg-secondary{
+    background-color: #474b50;
+    
+}
+
+button{
+    text-overflow: ellipsis;
+}
