@@ -40,10 +40,10 @@ h1{
 }
 
 .custom-bg-primary{
-    background-color: var(--custom-color-1);/*#474b50;*/
+    background-color: var(--custom-color-1);
 }
 .custom-bg-secondary{
-    background-color: var(--custom-color-3);/*#5b6268;*/
+    background-color: var(--custom-color-3);
     
 }
 

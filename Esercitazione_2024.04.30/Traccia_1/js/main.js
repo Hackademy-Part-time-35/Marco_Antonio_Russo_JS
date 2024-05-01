@@ -8,15 +8,33 @@ let timer = document.querySelector("#timer");
 let id_scalaSecondi;
 let stato_freeze = "freeze";
 
-// pseudo-animazione di attesa input
-// let idle = setInterval(wait,4000);
 
-// function wait(){
-//     timer.textContent = "—";
-//     setTimeout(() => timer.textContent = `\\`,1000);
-//     setTimeout(() => timer.textContent = "|",2000);
-//     setTimeout(() => timer.textContent = "/",3000);
-// }
+// pseudo-animazione di attesa input
+let controllo_output = 0;
+let idle = setInterval(wait,4000);
+
+function wait(){
+    timer.textContent = "—";
+    
+    setTimeout(() => {
+        if(controllo_output === 0){
+        timer.textContent = `\\`;
+        }
+    },1000);
+    
+    setTimeout(() => {
+        if(controllo_output === 0){
+            timer.textContent = "|";
+        }
+    },2000);
+
+    setTimeout(() => {
+        if(controllo_output === 0){
+            timer.textContent = "/";
+        }
+    },3000);
+
+}
 
 //funzioni
 function leggiSecondi(){
@@ -33,35 +51,46 @@ function scalaSecondi(){
 
 // attesa pulsanti
 button_start_countdown.addEventListener("click", function(){
-    // clearInterval(idle);
-    leggiSecondi();
-    id_scalaSecondi = setInterval(scalaSecondi,1000);
-});
-
-button_freeze_countdown.addEventListener("click", function(){
-    // clearInterval(idle);
-
-    if(stato_freeze === "freeze"){
-        stato_freeze = "unfreeze"
-        clearInterval(id_scalaSecondi);
-        console.log(stato_freeze);
-        button_freeze_countdown.innerHTML = "Unfreeze countdown";
-    }else if(stato_freeze === "unfreeze"){
-        stato_freeze = "freeze";
+    
+    if(input_timer.value !== ""){
+        controllo_output = 1;
+        clearInterval(idle);
+        leggiSecondi();
         id_scalaSecondi = setInterval(scalaSecondi,1000);
-        console.log(stato_freeze);
-        button_freeze_countdown.innerHTML = "Freeze countdown";
     };
 });
 
+button_freeze_countdown.addEventListener("click", function(){
+    let freeze_condition = timer.innerHTML !== "—" && timer.innerHTML !== `\\` && timer.innerHTML !== "|" && timer.innerHTML !== "/" && timer.innerHTML !== "";
+
+    if(freeze_condition){
+        controllo_output = 1;
+        clearInterval(idle);
+
+        if(stato_freeze === "freeze"){
+            console.log("stato timer: " + stato_freeze);
+            stato_freeze = "unfreeze"
+            clearInterval(id_scalaSecondi);
+            button_freeze_countdown.innerHTML = "Unfreeze countdown";
+        }else if(stato_freeze === "unfreeze"){
+            console.log("stato timer: " + stato_freeze);
+            stato_freeze = "freeze";
+            id_scalaSecondi = setInterval(scalaSecondi,1000);
+            button_freeze_countdown.innerHTML = "Freeze countdown";
+        };
+    }
+});
+
 button_stop_countdown.addEventListener("click", function(){
-    // clearInterval(idle);
+    controllo_output = 1;
+    clearInterval(idle);
 
     input_timer.value = "";
     timer.innerHTML = "";
     clearInterval(id_scalaSecondi);
 
-    // setTimeout(wait,4000);
+    controllo_output = 0;
+    idle = setInterval(wait,4000);
 });
 
 
