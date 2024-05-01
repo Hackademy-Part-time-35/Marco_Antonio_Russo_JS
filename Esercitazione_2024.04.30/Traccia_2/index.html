@@ -10,31 +10,32 @@
      <!-- Custom style -->
     <link rel="stylesheet" href="./style.css">
 </head>
-<body class="px-5">
+<body class="px-5 vh-100">
     
-    <div class="container-fluid bg-secondary rounded-3 mt-5 px-5 text-white pb-2 shadow-lg">
-        <h2 class="p-3">Agenda - Marco Antonio Russo</h2>
+    <div class="container-fluid rounded-3 mt-5 px-5 text-white pb-2 shadow-lg">
+        <h1 class="p-3 mt-3">Agenda</h1>
         <div class="row">
 
             <div class="col-6">
-                <div class="mb-3">
+                <form class="mb-3 form-floating">
+                    <input id="nome_contatto" type="text" class="form-control" placeholder="Nome contatto">
                     <label for="nome_contatto" class="form-label">Nome contatto</label>
-                    <input id="nome_contatto" type="text" class="form-control" id="nome_contatto" placeholder="Inserisci nome contatto">
-                </div>
+                </form>
 
-                <div class="mb-3">
-                    <label for="numero_contatto" class="form-label">Numero contatto</label>
+                
+                <div class="mb-3 form-floating">
                     <input type="number" class="form-control" id="numero_contatto" placeholder="Inserisci numero contatto">
+                    <label for="numero_contatto" class="form-label">Numero contatto</label>
                 </div>
                 
             </div>
 
-            <div class="col-6 d-flex flex-column gap-3 mt-auto mb-3 ">
-                <button id="aggiungi_contatto" class="btn btn-primary rounded rounded-pill">Aggiungi contatto</button>
+            <div class="col-6 d-flex flex-column gap-3  mb-3 mt-auto">
+                <button id="aggiungi_contatto" class="btn custom-bg-secondary rounded rounded-pill w-100 align-self-baseline">Aggiungi contatto</button>
                 
             </div>
             
-            <div class="row justify-content-center"><button id="visualizza_agenda" class="btn btn-success w-50">Visualizza agenda</button></div>
+            <div class="row justify-content-center"><button id="visualizza_agenda" class="btn custom-bg-primary w-50">Visualizza agenda</button></div>
             
         </div>
 

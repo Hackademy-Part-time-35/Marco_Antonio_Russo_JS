@@ -1,15 +1,100 @@
+:root{
+    --custom-color-1: #6EA607;
+    --custom-color-2: #c08848;
+    --custom-color-3: #4a6d05;
+    --color-warning: #FFC107;
+    --color-danger: #DC3545;
+    --custom-color-wood: #ad5c36;
+}
+body{
+    background-image: url("https://static.vecteezy.com/system/resources/previews/008/014/115/non_2x/tropical-leaves-background-design-summer-leaves-flat-illustration-simple-banner-with-copy-space-free-vector.jpg");
+
+}
+
+h1{
+   
+    color: var(--custom-color-1);  
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+
+
+.container-fluid{
+    width: 80%;
+    /* background-color: var(--custom-color-2); */
+    background: rgba( 255, 255, 255, 0.25 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 8px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+
+
+}
+
+
 #elenco_contatti{
     text-transform: capitalize;
+    font-weight: 600;
+    font-size: 1.2rem;
 }
 
 .custom-bg-primary{
-    background-color: #5b6268;
+    background-color: var(--custom-color-1);/*#474b50;*/
 }
 .custom-bg-secondary{
-    background-color: #474b50;
+    background-color: var(--custom-color-3);/*#5b6268;*/
     
 }
 
 button{
-    text-overflow: ellipsis;
+    color: var(--custom-color-3) !important;
+
+    background: rgba( 255, 255, 255, 0.25 ) !important;
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 ) !important;
+    backdrop-filter: blur( 8px ) !important;
+    border-radius: 10px !important;
+    border: 1px solid rgba( 255, 255, 255, 0.18 ) !important;
+}
+label{
+    color: grey ; 
+}
+
+
+.modify-button,
+.delete-button{
+    color: white !important;
+
+    background: rgba( 255, 255, 255, 0.25 ) !important;
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 ) !important;
+    backdrop-filter: blur( 8px ) !important;
+    border-radius: 10px !important;
+    border: 1px solid rgba( 255, 255, 255, 0.18 ) !important;
+}
+
+
+
+.modify-button:hover{
+    background-color: var(--color-warning) !important;
+}
+
+.delete-button:hover{
+    background-color: var(--color-danger) !important;
+}
+
+
+
+
+
+#aggiungi_contatto:hover{
+    background-color: var(--custom-color-1) !important;
+    color: white !important;
+
+}
+
+#visualizza_agenda:hover{
+    background-color: var(--color-warning) !important;
+    color: white !important;
+
+
 }
