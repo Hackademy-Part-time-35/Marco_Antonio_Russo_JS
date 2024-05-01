@@ -220,12 +220,13 @@ let agenda = {
         // stilizzazione area input modifica contatto
         input_area_name.classList.add("form-floating")
         input_area_tel.classList.add("form-floating")
-        input_area_form.classList.add("d-flex","gap-1");
+        input_area_form.classList.add("d-flex","gap-3");
         input_area_img.classList.add("input-group","w-25","d-flex")
         new_name.classList.add("form-control","modifica_contatto_input");
         new_tel.classList.add("form-control","modifica_numero_contatto_input");
         input_img.classList.add("form-control","outline-white","w-100")
-        toggle_modify_area.classList.add("w-100", "d-flex","gap-2","mt-3","justify-content-evenly")
+        toggle_modify_area.classList.add("w-100", "d-flex","gap-2","mt-3","justify-content-between", "border-top","border-3", "border-warning", "pt-3")
+        label_name.classList.add("form-label");
 
         // cattura input modifica contatto e tasto annulla modifiche
         modifica_nome_contatto = document.querySelectorAll(".modifica_contatto_input");
