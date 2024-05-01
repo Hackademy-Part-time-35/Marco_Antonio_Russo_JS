@@ -47,7 +47,8 @@ h1{
     
 }
 
-button{
+#aggiungi_contatto,
+#visualizza_agenda{
     color: var(--custom-color-3) !important;
 
     background: rgba( 255, 255, 255, 0.25 ) !important;
@@ -98,3 +99,22 @@ label{
 
 
 }
+
+#elenco_contatti img{
+    max-width: 3rem;
+    max-height: 3rem;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+}
+
+input[type="file"]{
+    font-size: .8rem;
+    border-top-left-radius: 6px !important;
+    border-bottom-left-radius: 6px !important;
+}
+
+label[for="input_img"]{
+    color: white;
+    font-size: 1rem;
+}
+
