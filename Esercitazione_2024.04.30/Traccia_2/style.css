@@ -101,10 +101,11 @@ label{
 }
 
 #elenco_contatti img{
-    max-width: 3rem;
-    max-height: 3rem;
-    aspect-ratio: 1/1;
+    width: 3rem;
+    height: 3rem;
+    /* aspect-ratio: 1/1; */
     border-radius: 50%;
+    object-fit: cover;
 }
 
 input[type="file"]{
