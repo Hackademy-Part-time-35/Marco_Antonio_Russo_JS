@@ -18,8 +18,8 @@ let visualizza_agenda = document.querySelector("#visualizza_agenda");
 let modifica_contatto_toggle = document.querySelector("#modifica_contatto_toggle");
 let button_modifica_contatto;
 
-let file = document.querySelector("#file");
-let send = document.querySelector("#send");
+// url default img
+let defaultIMG = "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png";
 
 // controllo se l'agenda è già aperta
 let controllo_agenda = 0;
@@ -30,9 +30,9 @@ let controllo_agenda = 0;
 // creazione agenda
 let agenda = {
     contatti: [
-        {imgUrl: "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png", name: "Marco Antonio", tel: "3207162521"},
-        {imgUrl: "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png", name: "Michele", tel: "3251469852"},
-        {imgUrl: "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png", name: "Miriam", tel: "3251469813"}
+        {imgUrl: defaultIMG , name: "Marco Antonio", tel: "3207162521"},
+        {imgUrl: defaultIMG , name: "Michele", tel: "3251469852"},
+        {imgUrl: defaultIMG , name: "Miriam", tel: "3251469813"}
     ],
 
     // metodo che gestisce l'apertura dell'elenco contatti e la creazione di nuovi tag
@@ -48,16 +48,13 @@ let agenda = {
             let row_div = document.createElement("div");
             let contact_div = document.createElement("div");
 
-            // attributi elementi generati
-            
-
             // generazione righe con i contatti
             span_contatto.textContent = `${elem.name} - Telefono:  ${elem.tel}`;
             delete_button.textContent = `Elimina contatto`;
             modify_button.textContent = `Modifica contatto`;
 
             // stilizzazione colore sfondo alternato per maggiore leggibilità
-            row_div.classList.add("d-flex","justify-content-between","p-3", "align-items-center","rounded","custom-bg-primary", "shadow", "mb-2")
+            row_div.classList.add("d-flex","justify-content-between","p-3", "align-items-center","rounded","custom-bg-primary", "shadow", "mb-2","flex-wrap","gap-y-2")
                 if(index % 2 == 0){
                     row_div.classList.add("custom-bg-secondary")
                 }
@@ -66,17 +63,21 @@ let agenda = {
             // stilizzazione pulsanti laterali per ogni contatto
             modify_button.classList.add("btn","btn-warning","modify-button");
             delete_button.classList.add("btn","btn-danger","delete-button","ms-2");
-            button_div.classList.add("d-flex","gap-2", "align-items-end");
+            button_div.classList.add("d-flex","gap-2", "align-items-end", "col-3");
+            contact_div.classList.add("col-9")
 
+            row_div.setAttribute("id", "row_div");
 
             // inserimento tag generati
             elenco_contatti.appendChild(row_div);
             row_div.appendChild(contact_div);
+            row_div.appendChild(button_div);
             contact_div.appendChild(contact_img);
             contact_div.appendChild(span_contatto);
-            row_div.appendChild(button_div);
             button_div.appendChild(modify_button);
             button_div.appendChild(delete_button);
+
+
             
             // stilizzazione img profilo utente default
             contact_img.src = this.contatti[index].imgUrl;
@@ -89,7 +90,7 @@ let agenda = {
             
             // attesa click per chiamare metodo eliminaContatto
             elimina_contatto[index].addEventListener("click" , function(){
-                agenda.eliminaContatto(index);
+                agenda.eliminaContatto(index,modify_button);
             });
 
             // attesa click per chiamare metodo modificaContatto
@@ -98,7 +99,7 @@ let agenda = {
                 // controllo per impedire apertura di più modifica contatto contemporaneamente
                 if(controlla_modifica === 0){
                     row_div.classList.add("border","border-5", "border-warning")
-                    agenda.modificaContatto(index, button_div, modify_button, contact_img);
+                    agenda.modificaContatto(index, button_div, modify_button, row_div);
                     controlla_modifica = 1;
 
                 }  
@@ -110,17 +111,26 @@ let agenda = {
 
         // metodo per inserire un oggetto nell'array contatti
     aggiungiContatto: function(){
-            let new_contatto = {name: nome_contatto.value, tel: numero_contatto.value}
+            let new_contatto = {
+
+                imgUrl: defaultIMG,
+                name: nome_contatto.value,
+                tel: numero_contatto.value
+
+            }
+            
             this.contatti.push(new_contatto);
     },
     
         // metodo per eliminare il contatto in corrispondenza del pulsante clickato
-    eliminaContatto: function(index){
+    eliminaContatto: function(index,modify_button){
+        if(modify_button.textContent=="Modifica contatto"){
         this.contatti.splice(index,1);
         elenco_contatti.innerHTML = ""
         agenda.visualizzaContatti();
         visualizza_agenda.innerHTML = "Nascondi agenda"
         controllo_agenda =1;
+        }
     },
 
         // metodo che cicla fra gli elementi di "contatti" per restituire l'indice in caso di corrispondenza del nome [metodo deprecato causa: inserimento pulsanti laterali per ogni contatto]
@@ -142,7 +152,7 @@ let agenda = {
     },
 
         // metodo per la creazione di due nuovi input per la modifica del contatto nella riga selezionata
-    modificaContatto: function(index_contatto,button_div, modify_button, contact_img){
+    modificaContatto: function(index_contatto,button_div, modify_button, row_div){
         // cattura elementi generati
         let input_area_form = document.createElement("form");
         let input_area_name = document.createElement("div");
@@ -152,9 +162,10 @@ let agenda = {
         let new_tel = document.createElement("input");
         let label_tel = document.createElement("label");
         let cancel = document.createElement("i");
-        let input_area_img = document.createElement("div")
-        let input_img = document.createElement("input")
-        let label_input_img = document.createElement("label")
+        let input_area_img = document.createElement("div");
+        let input_img = document.createElement("input");
+        let label_input_img = document.createElement("label");
+        let toggle_modify_area = document.createElement("div");
         let controllo_cancel = 0;
         
         // definizione tipo input
@@ -166,15 +177,15 @@ let agenda = {
         label_name.textContent = "Nome";
         label_tel.textContent = "Telefono";
         modify_button.textContent = "Salva modifiche"
-        label_input_img.textContent = "Seleziona immagine contatto"
+        label_input_img.textContent = "Immagine \n contatto"
         
-        // posizionamento tasto annulla e area input modifica contatto
-        button_div.insertBefore(input_area_form, modify_button);
-        button_div.insertBefore(input_area_img, modify_button);
-        button_div.insertBefore(cancel, input_area_form);
-        
+             
 
         // posizionamento tag
+        row_div.appendChild(toggle_modify_area);
+        toggle_modify_area.appendChild(input_area_form);
+        toggle_modify_area.appendChild(input_area_img);
+        toggle_modify_area.appendChild(cancel);
         input_area_form.appendChild(input_area_name);
         input_area_form.appendChild(input_area_tel);
         input_area_name.appendChild(new_name);
@@ -210,10 +221,11 @@ let agenda = {
         input_area_name.classList.add("form-floating")
         input_area_tel.classList.add("form-floating")
         input_area_form.classList.add("d-flex","gap-1");
-        input_area_img.classList.add("input-group","w-25","d-flex", "flex-column")
+        input_area_img.classList.add("input-group","w-25","d-flex")
         new_name.classList.add("form-control","modifica_contatto_input");
         new_tel.classList.add("form-control","modifica_numero_contatto_input");
         input_img.classList.add("form-control","outline-white","w-100")
+        toggle_modify_area.classList.add("w-100", "d-flex","gap-2","mt-3","justify-content-evenly")
 
         // cattura input modifica contatto e tasto annulla modifiche
         modifica_nome_contatto = document.querySelectorAll(".modifica_contatto_input");
