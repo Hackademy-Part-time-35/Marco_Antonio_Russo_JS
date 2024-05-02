@@ -51,7 +51,7 @@ function scalaSecondi(){
 
 // attesa pulsanti
 button_start_countdown.addEventListener("click", function(){
-    
+    clearInterval(id_scalaSecondi);
     if(input_timer.value !== ""){
         controllo_output = 1;
         clearInterval(idle);
