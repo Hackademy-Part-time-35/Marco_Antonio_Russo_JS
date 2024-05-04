@@ -1,0 +1,259 @@
+:root{
+    --custom-primary-color: #6D3E83;
+    --custom-light-color: #925cac;
+    --custom-dark-color: #714089;
+    --custom-blur-color: #71408963;
+    --custom-blur-more-color: #71408927;
+    --card-dimension: 24rem;
+    --custom-white-neon: rgba(245, 245, 245, 0.76);
+    --backgroud-color: #212529;
+    --transiton-short: 400ms;
+    --transition: 600ms;
+    --content: "ciao";
+}
+
+
+*{
+    font-family: "Tilt Neon", sans-serif;
+
+}
+
+
+h1,
+i{
+    text-shadow: var(--custom-primary-color) 0px 0px 12px,
+                var(--custom-light-color) 0 0 1px;
+    animation: neon-pulse-animation 2s ease infinite alternate;
+    
+}
+
+img{
+    background: url("./img/background.png");
+    animation: bg-animation 8s linear backwards infinite;
+    height: var(--card-dimension);
+    width: 16rem;
+}
+
+.card{
+    width: var(--card-dimension);
+    box-shadow: 0 0 1rem 1px var(--custom-blur-color) ;
+
+    transition: var(--transiton-short);
+
+}
+
+.offcanvas button:focus{
+    box-shadow: none;
+}
+
+.offcanvas-body>input{
+    border: 2px solid var(--custom-light-color);
+    background:transparent ;
+    width: 100%;
+    border-radius: 8px;
+    padding: 1rem;
+
+
+}
+
+.offcanvas-body>input + label{
+    position: relative;
+    inset: -2.7rem 1rem;
+    opacity: .6;
+    padding-inline: .2rem;
+    border-radius: 24px;
+
+    transition: inset 50ms linear;
+    
+
+}
+
+.offcanvas-body>input:focus + label,
+.offcanvas-body>input:not(:placeholder-shown) + label{
+    position: relative;
+    inset: -4.5rem 1rem;
+    opacity: 1;
+    border-radius: 24px;
+
+    background-color:  var(--backgroud-color) ;
+
+    transition: inset 50ms linear;
+}
+
+.offcanvas-body>input:focus{
+    outline: none;
+    background: none;
+
+    border: 2px solid var(--custom-light-color);
+    box-shadow: 0 0 1rem 1px var(--custom-blur-color) ;
+
+
+}
+
+.offcanvas-body>input[type="number"]::-webkit-outer-spin-button,
+.offcanvas-body>input[type="number"]::-webkit-inner-spin-button{
+   display: none;
+}
+
+
+input[type="radio"]:checked{
+    background-color: var(--custom-primary-color);
+    border-color: var(--custom-light-color);
+    box-shadow: 0 0 1rem 1px var(--custom-blur-color) ;
+}
+
+input[type="radio"]:focus{
+    border-color: var(--custom-light-color);
+    box-shadow: 0 0 1rem 1px var(--custom-blur-color) ;
+}
+
+#send{
+    margin-top: 1rem;
+    border: 2px solid var(--custom-light-color);
+    background: transparent;
+    width: 100%;
+    border-radius: 8px;
+    padding: 1rem;
+
+    transition: 500ms;
+
+
+}
+
+#send:hover{
+    background: var(--custom-blur-color) ;
+    border: 2px solid var(--custom-light-color);
+    box-shadow: 0 0 1rem 1px var(--custom-blur-color) ;
+
+
+}
+
+#send:active{
+    transition: 50ms ease;
+    border-color: 1px solid var(--custom-white-neon) ;
+}
+
+
+article:active .card{
+    transform: scale(1.1) rotatey(180deg);
+    transition: var(--transiton-short);
+
+
+}
+
+.card::before{
+    content: "";
+
+    position: absolute;
+    z-index: 1;
+    
+    opacity: 0;
+    background-color: var(--backgroud-color);
+    height: 100%;
+    width: 100%;
+    border-radius: 2rem;
+    transform: rotatey(180deg);
+
+    padding: 3rem 2rem;
+
+    transition: 200ms;
+
+
+
+}
+
+article:active .card:before{
+    opacity: 1;
+    transition: 200ms;
+
+    background: url("./img/background.png");
+    animation: bg-animation 8s linear backwards infinite;
+    height: calc(var(--card-dimension) + 12rem);
+    width: var(--card-dimension);
+
+}
+
+
+.animationError{
+    animation: error-animation 150ms ease-in-out forwards;
+
+}
+
+@keyframes bg-animation {
+    from{
+        background-position-y: 0rem;
+    }
+    to{
+        background-position-y: 19rem;
+    }
+    
+}
+
+a{
+    color: var(--custom-white-neon);
+}
+
+@keyframes neon-pulse-animation{
+    0%{
+        text-shadow: var(--custom-primary-color) 0px 0px 12px,
+                var(--custom-light-color) 0 0 1px;
+        color: white;
+    }
+
+    75%{
+        text-shadow: var(--custom-primary-color) 0px 0px 24px,
+                var(--custom-light-color) 0 0 4px;
+        color: rgba(245, 245, 245, 0.568);
+    }
+    
+    72%{
+        text-shadow: var(--custom-primary-color) 0px 0px 12px,
+                var(--custom-light-color) 0 0 1px;
+        color: white;
+    }
+
+    80%{
+        text-shadow: var(--custom-primary-color) 0px 0px 24px,
+                var(--custom-light-color) 0 0 4px;
+        color: var(--custom-white-neon);
+    }
+    
+    90%{
+        text-shadow: var(--custom-primary-color) 0px 0px 16px,
+                var(--custom-light-color) 0 0 2px;
+        color: var(--custom-white-neon);
+    }
+}
+
+
+@keyframes error-animation {
+    0%{
+        position: relative;
+        left: -.6rem;
+        color: red;
+        border-color: red;
+    }
+
+    50%{
+        position: relative;
+        left:  .6rem;
+        color: red;
+        border-color: red;
+        
+    }
+    
+    75%{
+        position: relative;
+        left: -.6rem;
+        color: red;
+        border-color: red;
+
+    }
+
+   100%{
+        color: red;
+        border-color: red;
+
+    }
+    
+}

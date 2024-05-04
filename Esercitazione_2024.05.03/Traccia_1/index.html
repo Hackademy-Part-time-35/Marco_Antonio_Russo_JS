@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="IT-it" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agenda Card</title>
+
+
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="./style.css">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tilt+Neon&display=swap" rel="stylesheet">
+</head>
+<body class="d-flex justify-content-center p-2 align-items-center flex-column">
+
+    <nav class="w-100 d-flex align-items-center px-3 justify-content-between">
+        
+        <div></div>
+        <h1>Agenda</h1>
+        <!-- apertura offcanvas -->
+        <i class="fa-solid fa-plus fs-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvas"></i>
+        <!-- offcanvas -->
+        <div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="true" tabindex="-1" id="offcanvas" >
+            <div class="offcanvas-header">
+            <h2 class="offcanvas-title" id="offcanvasLabel">Aggiungi contatto</h2>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" ></button>
+        </div>
+        <div class="offcanvas-body">
+            <input id="name" type="text" placeholder="">
+            <label for="name">Name</label>
+            
+            <input id="number" type="number" placeholder="">
+            <label for="number">Number</label>
+
+            <input id="email" type="email" placeholder="">
+            <label for="email">E-mail</label>
+
+            <div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="male-radio" value="male">
+                    <label class="form-check-label" for="male-radio">Male</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="female-radio" value="female">
+                    <label class="form-check-label" for="female-radio">Female</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="undefined-radio" value="undefined" checked>
+                    <label class="form-check-label" for="undefined-radio">Undefined</label>
+                </div>
+            </div>
+
+            <button id="send">Send</button>
+            <a type="button" id="cancel" class="mt-2">Annulla</a>
+            </div>
+        </div>
+        <!-- fine offcanvas -->
+    </nav>
+
+    <main class="container-fluid ">
+        
+        <div class="row justify-content-center mt-5 row-gap-5">
+            
+
+
+    
+            
+
+            
+        </div>
+
+        
+        
+    </main>
+
+
+
+
+
+
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/f49eb6cdaa.js" crossorigin="anonymous"></script>
+
+    <!-- Custom JS -->
+    <script src="./js/main.js"></script>
+</body>
+</html>
