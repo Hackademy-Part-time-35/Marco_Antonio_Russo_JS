@@ -7,6 +7,7 @@ let radio = document.querySelectorAll(`input[type="radio"]`);
 let inputs = document.querySelectorAll("input");
 let labels = document.querySelectorAll("label");
 let cancel = document.querySelector("#cancel")
+let close_offcanvas = document.querySelector("i")
 
 let agenda = {
     // inizializzazione contatti
@@ -150,6 +151,7 @@ send_btn.addEventListener("click", function(){
         agenda.newContact();
         agenda.clearInputs();
         agenda.writeCard();
+        close_offcanvas.click();
     }else{
         agenda.emptyError();
     }

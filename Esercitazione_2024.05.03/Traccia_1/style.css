@@ -32,6 +32,7 @@ img{
     animation: bg-animation 8s linear backwards infinite;
     height: var(--card-dimension);
     width: 16rem;
+    object-fit: cover;
 }
 
 .card{
@@ -41,6 +42,29 @@ img{
     transition: var(--transiton-short);
 
 }
+
+
+article:hover .card{
+    transform: scale(1.05);
+    transition: var(--transiton-short);
+    box-shadow: 0 0 3rem 8px var(--custom-blur-color) ;
+
+}
+
+article:not(:hover):has( ~ article),
+article ~ article:not(:hover){
+    
+    transition: var(--transiton-short);
+}
+
+article:not(:hover):has( ~ article:hover),
+article:hover ~ article:not(:hover){
+    transform: scale(.95);
+    opacity: .3;
+    transition: var(--transiton-short);
+}
+
+
 
 .offcanvas button:focus{
     box-shadow: none;
@@ -134,14 +158,10 @@ input[type="radio"]:focus{
 }
 
 
-article:active .card{
-    transform: scale(1.1) rotatey(180deg);
-    transition: var(--transiton-short);
 
 
-}
 
-.card::before{
+/* .card::before{
     content: "";
 
     position: absolute;
@@ -160,8 +180,8 @@ article:active .card{
 
 
 
-}
-
+} */
+/* 
 article:active .card:before{
     opacity: 1;
     transition: 200ms;
@@ -171,7 +191,7 @@ article:active .card:before{
     height: calc(var(--card-dimension) + 12rem);
     width: var(--card-dimension);
 
-}
+} */
 
 
 .animationError{
