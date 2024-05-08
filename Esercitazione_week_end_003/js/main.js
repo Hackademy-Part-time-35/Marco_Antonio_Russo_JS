@@ -198,3 +198,71 @@ function toObject(array){
 
 
 console.log(toObject([["nome", "marco"],["cognome", "russo"],["anni", "30"]]));
+
+// 15. scrivere una funzione che, assegnata una stringa, ritorni un oggetto con chiavi le parole (distinte) e valori la loro frequenza. Ad esempio "Quella cosa affianco alla cosa sulla cosa" => {Quella: 1, cosa: 3, affianco: 1, alla: 1, sulla: 1}
+function stringToObject(stringa){
+    let array = stringa.split(" ")
+    let obj = {};
+    
+    array.forEach((elem,index) =>{
+        let unique_array = array.filter(elem => elem == array[index])
+        obj[elem] = unique_array.length;
+    })
+    
+   
+    return  obj;
+}
+
+console.log(stringToObject("Quella cosa affianco alla cosa sulla cosa"));
+
+// 16. scrivere una funzione che, data una stringa, trasformi la prima lettera di ogni marola in maiuscolo
+function capitalize(string){
+    let array = string.split(" ")
+    let array_capitalized = [];
+    array.forEach((elem) =>{
+        array_capitalized.push(elem[0].toUpperCase() + elem.substr(1));
+        console.log(elem);
+    })
+    return array_capitalized.join(" ")
+};
+
+console.log(capitalize("Quella cosa affianco alla cosa sulla cosa"));
+
+// 17. scrivere una funzione che, assegnata una stringa, ritorni il numero di vocali presenti (gestire le maiuscole)
+function countVocals(string){
+let vocals = ["a","e","i","o","u","A","E", "I", "O", "U"];
+let count = 0;
+    for (let i = 0; i < string.length; i++) {
+        for(let j = 0; j < vocals.length; j++){
+            if(string[i] === vocals[j]){
+            count++;
+            }
+        }
+    }
+    return count;
+};
+
+console.log(countVocals("Quella cosa affianco alla cosa sulla cosa"));
+
+// 18. Scrivere una funzione che , assegnata una stringa, ne faccia lo slug. Ad esempio: "Sono una stringa" => "/sono-una-stringa"
+function slug(string){
+    return "/" + string.toLowerCase().replaceAll(" ", "-")
+};
+
+console.log(slug("Sono una stringa"));
+
+// 19. Scrivere una funzione che accetta una stringa e  restituisce la parola più lunga
+function longWord(string){
+  return string.split(" ").sort((a,b)=>a.length-b.length).pop()
+};
+
+console.log(longWord("Quella cosa affianco alla cosa sulla cosa"));
+
+// 20. scrivere una funzione che dato un array, ritorni "pari" o "dispari" a seconda che la somma dei suoi elementi sia pari o dispari
+function oddEven(array){
+return array.reduce((x,y) => x+y) % 2 == 0 ? "pari" : "dispari";
+  
+
+};
+
+console.log(oddEven([5,1,88,3,24]));
