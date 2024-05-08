@@ -5,6 +5,7 @@
 :root{
     --custom-blue: #193140;
     --custom-green: #1A3C40;
+    --custom-green-opaque: #1a3c40e5;
     --custom-brown: #A65B1B;
     --custom-pink: #F2CBC2;
     --custom-white: #F0EBE8;
@@ -97,7 +98,7 @@ nav{
 .active-page:visited{
     color: var(--custom-brown);
 }
-
+/* TODO adjust animation for mobile */
 .nav-link::before{
     content:" ";
     display: block;
@@ -132,16 +133,26 @@ nav{
 /* End Navbar */
 
 /* Hero section */
-h1{
+.brand-over{
     position: absolute;
     z-index: 1;
-    left: 23%;
     pointer-events: none;
+    width: 100%;
+    
+    margin-top: 1rem;
     
 }
+/* TODO add background for contrast */
+.brand-over > img{
+    position: relative;
+    left: 25%;
+    height: auto;
+    max-width: 50%;
 
-h1 > img{
-    width: 75%;
+    transform: scale(.6);
+
+    background-color: var(--custom-green-opaque);
+
 }
 
 #container-hero-section{
@@ -167,8 +178,6 @@ h1 > img{
     width: 99vw;
     height: calc(100dvh - var(--navbar-heigth));
 
-    /* min-width: 99vw; */
-    /* max-height: 100svh; */
 }
 
 .slider-image{
@@ -217,6 +226,7 @@ position: absolute;
     pointer-events: none;
 }
 
+/* TODO modify colors */
 .slider-button{
     position: absolute;
     background-color: var(--custom-white);
@@ -225,7 +235,7 @@ position: absolute;
     border-radius: 50%;
     display: grid;
     place-items: center;
-    top: 60%;
+    top: 70%;
     left: var(--position);
     transform: translate(-50%, -50%);
     pointer-events: none;
@@ -243,4 +253,5 @@ i{
 .custom-padding-0-sm{
     padding: 0;
 }
+
 }
