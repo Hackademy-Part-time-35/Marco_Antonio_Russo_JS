@@ -20,12 +20,12 @@ document.querySelector('.slider').addEventListener('input', (element) => {
 })
 
 
-
+// funzione per numeri casuali 0-9
 function numbersRoll(){
     return Math.floor(Math.random() * 10);;
 }
 
-
+// inizio animazione numeri solo ad elementi visibili
 window.addEventListener("scroll", function(){
     let triggerHeight = document.querySelector("#numbers-article");
 
@@ -54,7 +54,6 @@ window.addEventListener("scroll", function(){
         setTimeout(function(){
             clearInterval(id_interval);
             originalValues.splice(numOfSpan, originalValues.length -1 )
-            console.log(originalValues);
 
 
             span_1_num.forEach((num, index) =>{
@@ -70,7 +69,7 @@ window.addEventListener("scroll", function(){
                 num.innerHTML = originalValues[index + span_1_num.length + span_2_num.length + span_3_num.length ]
             }); 
         }, 2000);
-        console.log(numOfSpan);
+
         alreayAnimated = true;
     }
 
