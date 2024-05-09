@@ -71,7 +71,7 @@ nav{
 #navbarSupportedContent{
     position: relative;
     inset: 0;
-    padding-top: 0!important;
+    padding-top: 0;
     
 }
 
@@ -101,7 +101,7 @@ nav{
 /* TODO adjust animation for mobile */
 .nav-link::before{
     content:" ";
-    display: block;
+    display: inline-block;
     height: 2px;
     width: 0;
     position: absolute;
@@ -113,7 +113,7 @@ nav{
 }
 .nav-link::after{
     content:" ";
-    display: block;
+    display: inline-block;
     height: 2px;
     width: 0;
     position: absolute;
@@ -142,7 +142,7 @@ nav{
     margin-top: 1rem;
     
 }
-/* TODO add background for contrast */
+
 .brand-over > img{
     position: relative;
     left: 25%;
@@ -160,7 +160,7 @@ nav{
     top: 0;
     display: grid;
     place-items: center;
-    height:  calc(100dvh - var(--navbar-heigth));
+    height:  calc(100svh - var(--navbar-heigth));
 }
 
 #hero-section{
@@ -168,7 +168,7 @@ nav{
     position: relative;
     top: 0;
     overflow: hidden;
-    height: 100dvh;
+    height: 100svh;
     
 }
 
@@ -176,7 +176,7 @@ nav{
     position: relative;
     top: 0;
     width: 99vw;
-    height: calc(100dvh - var(--navbar-heigth));
+    height: calc(100svh - var(--navbar-heigth));
 
 }
 
@@ -219,17 +219,16 @@ position: absolute;
     position: absolute;
     inset: 0;
     width: .2rem;
-    height:  calc(100dvh - var(--navbar-heigth));
-    background-color: var(--custom-white);
+    height:  calc(100svh - var(--navbar-heigth));
+    background-color: var(--custom-green);
     left: var(--position);
     transform: translateX(-50%);
     pointer-events: none;
 }
 
-/* TODO modify colors */
 .slider-button{
     position: absolute;
-    background-color: var(--custom-white);
+    background-color: var(--custom-green-opaque);
     color: black;
     padding: .5rem;
     border-radius: 50%;
@@ -243,9 +242,38 @@ position: absolute;
 }
 
 i{
-    color: var(--custom-blue);
+    color: var(--custom-white);
 } 
 /* End Hero section */
+
+/* Numeri */
+
+.numbers span{
+    font-size: 5rem;
+    
+}
+
+.numbers-article P{
+    text-transform: capitalize;
+
+}
+
+
+
+
+
+
+
+/* End Numeri */
+
+
+
+
+
+
+
+
+
 
 
 @media screen and (width < 992px) {
