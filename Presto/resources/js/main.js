@@ -10,7 +10,6 @@ let numOfSpan = document.querySelectorAll("#numbers-article span").length;
 let alreayAnimated = false;
 let triggerHeight = document.querySelector("#numbers-article");
 
-// let numbers_p = document.querySelectorAll(".numbers");
 
 // logica slider hero section
 document.querySelector('.slider').addEventListener('input', (element) => {
@@ -30,7 +29,7 @@ function numbersRoll(){
     return Math.floor(Math.random() * 10);;
 }
 
-// inizio animazione numeri solo ad elementi visibili
+// inizio animazione numeri solo ad elementi visibili che viene eseguita solo 1 volta
 
 let observer = new IntersectionObserver((entries)=>{
     entries.forEach((entry) =>{
@@ -81,6 +80,8 @@ let observer = new IntersectionObserver((entries)=>{
 
     });
 });
+
+
 observer.observe(triggerHeight)
 
 
