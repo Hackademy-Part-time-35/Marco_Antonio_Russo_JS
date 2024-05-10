@@ -48,7 +48,7 @@ h1,h2,h3,h4,h5,h6{
 
 /* Fast color classes */
 .custom-bg-blue{
-    background-color: var(--custom-blue);
+    background-color: var(--custom-blue)!important;
 }
 .custom-bg-green{
     background-color: var(--custom-green);
@@ -258,9 +258,10 @@ i{
 
 /* Numeri */
 
-.numbers span{
+.numbers > span{
     font-size: 5rem;
-   
+    width: 52.97px;
+    text-align: center;
     
 }
 
@@ -268,7 +269,6 @@ i{
     text-transform: capitalize;
     
 }
-
 
 
 
@@ -294,6 +294,13 @@ i{
     padding: 0;
 }
 
+.numbers > span{
+    font-size: 4rem;
+    width: 42.38px;
+    text-align: center;
+    
+}
+
 }
 
 
@@ -302,8 +309,14 @@ i{
 
 /* End Pagina Index */
 /* Pagina Annunci */
+aside{
+    display: flex;
+    align-items: flex-end;
+    justify-content: end;
+    height: 10svh;
+}
 
-button[data-bs-toggle="offcanvas"]{
+.filter_btn{
     width: 6rem;
     background-color: var(--custom-green);
     outline: 1px solid var(--custom-white-opaque);
@@ -313,24 +326,70 @@ button[data-bs-toggle="offcanvas"]{
     text-align: center;
     font-weight: 400;
     border-radius: 4px;
-
+    z-index: 1;
+    
     position: fixed;
-
+    right: 0;
+    transition: all 500ms,
+                width 0ms;
 }
-button[data-bs-toggle="offcanvas"]:hover{
+.filter_btn:hover{
     background-color: var(--custom-brown);
 }
-button[data-bs-toggle="offcanvas"]:focus{
-    background-color: var(--custom-green)!important;
-   
+
+
+.filter_menu{
+    height: calc(100svh - var(--navbar-heigth));
+    width: 0;
+    bottom: 0;
+    padding-block: 5rem;
+
+
+    overflow: hidden;
+
+    position: absolute;
+    bottom: 0;
+
+    transition: all 500ms;
+                
+    
+    /* display: flex; */
+    /* align-items: flex-start; */
+
     
 }
 
 
+.open_filter{
+    height: calc(100svh - var(--navbar-heigth));
+    width: 20vw;
+    bottom: 0;
+    padding: 5rem;
 
-aside{
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    height: 80svh;
+    position: absolute;
+   
+
+    transition: all 500ms;
+
+    /* display: flex; */
+    /* align-items: flex-start; */
+
+
+
+    border-top: .1rem solid var(--custom-brown);
+    outline: .1rem solid var(--custom-brown);
+
+    
 }
+
+.open_btn{
+    right: 20vw;
+    transition: all 500ms,
+                width 0;
+    border: .1rem solid var(--custom-brown);
+    border-right: none;
+    outline: .1rem solid var(--custom-green);
+
+
+}
+/* End Pagina Annunci */
