@@ -72,13 +72,14 @@ footer{
 }
 
 .active-page{
+    text-shadow: 0 0 1px black;
     color: var(--custom-brown);
-    font-weight: 800;
 }
 
 /* Navbar */
 nav{
     max-height: var(--navbar-heigth);
+    font-weight: 800;
 }
 #brand-img{
     max-height: calc(var(--navbar-heigth) - .5rem );
@@ -534,3 +535,21 @@ aside{
     
 }
 /* End Pagina Annunci */
+
+/* Animations */
+
+@keyframes navbarCurrentPage {
+    0%{
+        color: var(--custom-white);
+
+    }
+
+    80%{
+        color: var(--custom-white);
+    }
+    
+    100%{
+        color: var(--custom-brown);
+    }
+    
+}
