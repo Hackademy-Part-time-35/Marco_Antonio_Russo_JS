@@ -311,6 +311,8 @@ i{
 .cards:not(:hover):has( ~ .cards),
 .cards ~ .cards:not(:hover){
     transition: calc(var(--transition-time-card) + 200ms) ease-out;
+    overflow: hidden;
+    text-overflow: clip;
 
 }
 
@@ -318,6 +320,9 @@ i{
 .cards:hover ~ .cards:not(:hover){
     width: 2rem;
     height: calc(var(--card-img-width) * 1.25);
+
+    overflow: hidden;
+    text-overflow: clip;
 
     transition: calc(var(--transition-time-card) + 200ms) ease-out;
 
@@ -328,7 +333,10 @@ i{
     max-width: var(--card-img-width);
     height: auto;
     position: absolute;
-    transition: var(--transition-time-card) var(--transition-time-card)  ease-in;
+
+    width: inherit;
+
+    overflow: hidden;
     
 }
 
@@ -342,12 +350,12 @@ i{
 }
 
 
-
 .card-text p{
     opacity: 0;
     transition: calc(var(--transition-time-card) + 200ms) ease-out;
     width: var(--card-img-width);
     text-shadow: 0 0 .2rem black;
+
 
     
     
@@ -372,9 +380,17 @@ i{
 .cards:not(:hover):has( ~ .cards:hover)  h3,
 .cards:hover ~ .cards:not(:hover)  h3{
     opacity: 0;
+    
     transition: var(--transition-time-card) ease-out;
 
 }
+
+/* .cards:not(:hover):has( ~ .cards:hover)  .card-text,
+.cards:hover ~ .cards:not(:hover)  .card-text{
+    width: inherit;
+
+    overflow: hidden;
+} */
 /* End Card Section */
 
 
