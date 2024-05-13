@@ -451,11 +451,17 @@ i{
 
 /* End Pagina Index */
 /* Pagina Annunci */
+.body-annunci{
+    margin-top: 140px;
+}
+
+
 aside{
     display: flex;
     align-items: flex-end;
     justify-content: end;
-    height: 10svh;
+    height: 100%;
+    
 }
 
 .filter_btn{
@@ -482,40 +488,35 @@ aside{
 
 
 .filter_menu{
-    height: calc(100svh - var(--navbar-heigth));
+    height: calc(100vh - var(--navbar-heigth));
     width: 0;
-    bottom: 0;
+    top: var(--navbar-heigth);
     padding-block: 5rem;
     
     
     overflow: hidden;
     
-    position: absolute;
-    bottom: 0;
+    position: fixed;
     
     transition: all 500ms;
     
     
-    /* display: flex; */
-    /* align-items: flex-start; */
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;   
     
     
 }
 
 
 .open_filter{
-    height: calc(100svh - var(--navbar-heigth));
     width: 20vw;
-    bottom: 0;
     padding: 5rem;
     
-    position: absolute;
     
     
     transition: all 500ms;
-    
-    /* display: flex; */
-    /* align-items: flex-start; */
+  
     
     
     
@@ -537,14 +538,31 @@ aside{
 }
 
 /* Cards JSON */
+main{
+    transition: width 800ms ;
+}
+#ads-container h3{
+    font-size: 2rem;
+}
 
+#ads-container h4{
+    font-size: 1.2rem;
+}
+
+#ads-container li{
+    font-size: 1rem;
+}
 .card-ads{
-    width: 20rem;
+    /* width: 20rem; */
     height: 30rem;
     border-radius: 24px;
     padding: 0;
+    overflow: hidden;
 
     box-shadow: 0 0 .8rem black;
+
+    transition: all 400ms;
+    
 
 }
 
@@ -554,21 +572,56 @@ aside{
     border-radius: 24px;
     object-fit: cover;
 
+    transform: scale(1.8);
+    opacity: 0.6;
+
+    transition: all 400ms;
+
 }
 
 .card-ads-text{
     position: relative;
-    bottom: 36%;
-    width: 20rem;
+    bottom: 36.2%;
+    width: 100%;
 
     padding: 1rem;
 
-    background-color: rgba(34, 34, 34, 0.678);
+    background-color: var(--custom-green-opaque);
     border-bottom-left-radius: 24px;
     border-bottom-right-radius: 24px;
 
 }
+
+.card-ads:hover{
+    transform: scale(1.1);
+    transition: all 400ms;
+
+}
+
+.card-ads:hover .card-ads-img{
+    
+    object-fit: cover;
+    transform: scale(1);
+    transition: all 400ms;
+
+}
+
+@media screen and (width < 992px) {
+    
+    .open_btn{
+        right: 70vw;
+
+    }
+
+    .open_filter{
+        width: 70vw;
+
+    }
+
+}
 /* END Cards JSON */
+
+
 
 /* End Pagina Annunci */
 
