@@ -508,10 +508,47 @@ aside{
     
 }
 
+.filter_menu .filter-accordion{
+    width: 100%;
+}
+
+.filter_menu .filter-accordion .accordion-button{
+    color: var(--custom-white);
+    background-color: var(--custom-blue);
+    border-bottom:1px solid var(--custom-brown) ;
+    box-shadow: none;
+
+
+}
+.filter_menu .filter-accordion .accordion-body{
+    color: var(--custom-white);
+    background-color: var(--custom-blue);
+    border-block: 1px solid var(--custom-brown) ;
+    
+}
+
+
+.filter_menu .filter-accordion *::after{
+    display: none;
+
+}
+
+.accordion-button .fa-chevron-down{
+    transition: transform 200ms;
+
+}
+
+.rotate-180{
+    transform: rotate(180deg);
+    transition: transform 200ms;
+}
+.accordion-button:focus{
+    box-shadow: none;
+}
 
 .open_filter{
     width: 20vw;
-    padding: 5rem;
+    padding: 2rem;
     
     
     
