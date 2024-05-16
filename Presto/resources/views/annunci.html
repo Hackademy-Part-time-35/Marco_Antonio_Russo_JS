@@ -60,7 +60,7 @@
         <button id="filter_btn" class="btn filter_btn" type="button" ><i class="fa-solid fa-sliders"></i> Filter</button>
         <!-- EndTrigger Offcanvas -->
         <!-- Offcanvas -->
-        <div  class="filter_menu custom-bg-green">
+        <div  class="filter_menu custom-bg-green flex-column justify-content-start overflow-y-scroll">
 
             <div class="filter-accordion">
 
@@ -77,9 +77,9 @@
                             <div class="accordion-body" id="region">
                                 <!-- Azzera -->
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="radio_region" id="azzera">
-                                    <label class="form-check-label" for="azzera">
-                                        Azzera
+                                    <input class="form-check-input" type="radio" name="radio_region" id="all" checked>
+                                    <label class="form-check-label" for="all">
+                                        All
                                     </label>
                                 </div>
 
@@ -95,9 +95,10 @@
                             </button>
                         </h2>
                         <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                            <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the
-                                <code>.accordion-flush</code> class. This is the second item's accordion body. Let's imagine this being
-                                filled with some actual content.
+                            <div class="accordion-body d-flex flex-column">
+                                <label for="maxprice"> Max Price</label>
+                                <input type="range" name="max_price" id="maxprice" min="100000" max="1000000">
+                                <p id="max_price_indicator"></p>
                             </div>
                         </div>
                     </div>
@@ -121,6 +122,7 @@
                 </div>
 
             </div>
+            <button id="filter-reset" class="mt-5 w-100 custom-bg-blue btn custom-text-white rounded-0">Reset filters</button>
         </div>
         <!-- End Offcanvas -->
         <!-- End Filtri -->

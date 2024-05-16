@@ -574,6 +574,34 @@ aside{
     
 }
 
+/* filtri */
+input[name="radio_region"]:checked{
+    background-color: var(--custom-brown);
+    border-color: var(--custom-brown);
+    box-shadow: none;
+}
+
+
+input[name="radio_region"]:focus{
+    box-shadow: var(--custom-brown);
+    border-color: var(--custom-brown);
+
+    
+}
+
+#maxprice{
+    accent-color: var(--custom-brown);
+}
+
+
+#filter-reset:hover{
+    border-color: var(--custom-brown);
+}
+#filter-reset:active{
+    border-color: var(--custom-white);
+}
+
+
 /* Cards JSON */
 main{
     transition: width 800ms ;

@@ -9,15 +9,19 @@ let chevron_accordion = document.querySelectorAll(".accordion-button .fa-chevron
 let regions = [];
 let region_accordion = document.querySelector("#region");
 let radio_regions;
+let radio_all_regions = document.querySelector("#all");
 let checked_radio;
-let radioIsClicked = false;
+let max_price = document.querySelector("#maxprice");
+let max_price_indicator = document.querySelector("#max_price_indicator");
+let filter_reset = document.querySelector("#filter-reset");
 
+// funzione per modificare la larghezza della visualizzazione degli annunci quando filtri è aperto
 btn_filter.addEventListener("click", () =>{
 
         if(controllo_filtri === "closed"){
             filter_menu.classList.toggle("open_filter");
             btn_filter.classList.toggle("open_btn");
-            btn_filter.innerHTML = `<i class="fa-solid fa-sliders"></i> Apply`;
+            btn_filter.innerHTML = `<i class="fa-solid fa-sliders"></i> Close`;
             controllo_filtri = "opened";
             main.style.width = "80%";
         }else{
@@ -31,22 +35,43 @@ btn_filter.addEventListener("click", () =>{
 
 });
 
+
+
+// ascolto per apertura accordion e rotazione della freccia
+accordion_btn.forEach((el,ind) =>{
+    el.addEventListener("click", function(){
+        chevron_accordion[ind].classList.toggle("rotate-180");
+    });
+});
+
+
+
+
+
+// acquisizione file JSON
 fetch("../../data/elenco_immobili.json")
     .then(response => response.json())
     .then(data =>{
 
+
+        // Modifico il prezzo degli annunci eliminando i decimali e formattando i numeri con un punto di divisione per maggiore leggibilità
+        data.forEach(el =>{
+            el.prezzo = Math.floor(el.prezzo).toLocaleString();
+        });
+
+        // ordino l'array di oggetti alfabeticamente per regione
+        data.sort((a,b) => (a.regione.localeCompare(b.regione)));
+
+
+
         // funzione creazione card con annunci
-        function createCard(region, price, word){
+        function createCard(array_region){
             ads_container.innerHTML = "";
 
-            data.forEach(ads => {
+            array_region.forEach(ads => {
                 let card = document.createElement("article");
                 card.classList.add("col-9", "col-md-5", "col-xl-3","card-ads");
                 
-                
-                if(radioIsClicked && (ads.regione === region || ads.prezzo < price)){ // mostra solo le card filtrate
-                    ads_container.appendChild(card);
-
                     card.innerHTML = `
                     <img class="card-ads-img" src="https://media.licdn.com/dms/image/D4D12AQGPy6n4XA3eiQ/article-cover_image-shrink_720_1280/0/1687039862345?e=2147483647&v=beta&t=reyO4Xm8PwuFc3KlLdSGCxgassaMBixCPJhtcWASBaM" alt="">
                     <section class="card-ads-text">
@@ -58,35 +83,23 @@ fetch("../../data/elenco_immobili.json")
                     </ul>
                     </section>
                     `
-                } else if (!radioIsClicked){    // mostra tutte le carte
                     ads_container.appendChild(card);
                     
-                    card.innerHTML = `
-                    <img class="card-ads-img" src="https://media.licdn.com/dms/image/D4D12AQGPy6n4XA3eiQ/article-cover_image-shrink_720_1280/0/1687039862345?e=2147483647&v=beta&t=reyO4Xm8PwuFc3KlLdSGCxgassaMBixCPJhtcWASBaM" alt="">
-                    <section class="card-ads-text">
-                        <h3>${ads.regione}</h3>
-                        <h4>${ads.prezzo} €</h4>
-                        <ul>
-                            <li>${ads.metri_quadrati} mq</li>
-                            <li>${ads.numero_camere} rooms</li>
-                        </ul>
-                    </section>
-                    `
-
-                } else if(region === "azzera"){ // annulla i filtri e richiama la creazione delle carte
-                    radioIsClicked = false;
-                    createCard();
-                }
-
         });
-
-
         }
-        
-        // funzione per creazione radio buttons
+
+
+
+        // funzione per creare i radio button
         function radioRegion(){
 
-            regions.forEach((region, index) =>{
+            data.forEach(ads =>{
+                if(!regions.includes(ads.regione)){
+                    regions.push(ads.regione);
+                };
+            });
+
+            regions.forEach(region =>{
                 region_accordion.innerHTML += `
                     <div class="form-check">
                         <input class="form-check-input" type="radio" name="radio_region" id="${region}">
@@ -96,44 +109,107 @@ fetch("../../data/elenco_immobili.json")
                     </div>
                     `;
             })
-            radio_regions = document.querySelectorAll("input[name=\"radio_region\"]");
+            radio_regions = document.querySelectorAll("input[name=\"radio_region\"]"); // array con tutti i radio appena creati
+        };
 
+
+/* VECCHIE FUNZIONI FILTRI SINGOLI
+        // funzione per creazione array con la regione selezionata
+        function getFilteredRegions(region_id){
+            let filtered_array_region = [];
             
-
+            if(region_id === "all"){
+                // getAllFilter(data);
+                return [{regione: "all"}];
+            } else {
+                filtered_array_region = data.filter(el => el.regione === region_id);
+                // getAllFilter(filtered_array_region,Infinity);
+                return filtered_array_region;
+            };
         };
 
-
-
-        // funzione per creazione array con le regioni negli annunci
-        function getRegions(){
-            data.forEach(ads =>{
-                if(!regions.includes(ads.regione)){
-                    regions.push(ads.regione);
-                };
-            });
+        // funzione per creazione array con il prezzo massimo selezionato
+        function getFilteredPrice(price){
+            let filtered_array_price = [];
+                filtered_array_price = data.filter(el => el.prezzo <= price);
+                // getAllFilter("", filtered_array_price);
+                return filtered_array_price;
         };
+        
+*/
+
+        // Funzione che richiama la generazione delle card a schermo passando un array di annunci che corrispondono a tutti i filtri impostati
+        function getAllFilter(region,price){
+            console.log(region);
+            console.log(price);
+            let array_ads;
+
+            if(region === "all"){
+                array_ads = data.filter(el => el.prezzo <= price);
+            }else{
+                array_ads = data.filter(el => el.regione === region && el.prezzo <= price);
+            };
+            createCard(array_ads);
+        }
+
+
+        // funzione che ritorna il prezzo minore fra gli annunci
+        function minPriceRange(){
+            return Math.min(...data.map(el => el.prezzo)) // uso lo spread operator per controllare il minore fra tutti gli elementi dell'array creato con .map() contenente solo i prezzi degli annunci
+        }
+        
+        // funzione che ritorna il prezzo maggiore fra gli annunci
+        function maxPriceRange(){
+            return Math.max(...data.map(el => el.prezzo)) // uso lo spread operator per controllare il maggiore fra tutti gli elementi dell'array creato con .map() contenente solo i prezzi degli annunci
+
+        }
 
 
 
-        createCard();
-        getRegions();
+
+
+// ======================================= FINE FUNZIONI =============================================
+
+
+
+
+
+
+
+        // invocazione funzioni iniziali
+        createCard(data);
         radioRegion();
-
 
         // ascolto per il click su un radio button
         radio_regions.forEach(radio =>{
             radio.addEventListener("click", function(){
-                radioIsClicked = true;
-                createCard(radio.getAttribute("id"))
+                getAllFilter(radio.getAttribute("id"), max_price.value); //richiamo la funzione passando il radio clickato e il valore massimo del prezzo
             });
         });
-    })
 
+        // imposta gli attributi del selettore di prezzo con il minimo e il massimo dei prezzi degli annunci presenti e muove il selettore al massimo prezzo come default
+        max_price.setAttribute("min", minPriceRange());
+        max_price.setAttribute("max", maxPriceRange());
+        max_price.value = maxPriceRange();
 
-// ascolto per apertura accordion e rotazione della freccia
-accordion_btn.forEach((el,ind) =>{
-    el.addEventListener("click", function(){
-        chevron_accordion[ind].classList.toggle("rotate-180");
-    });
-});
+        // mostra a schermo il valore del selettore di prezzo
+        max_price_indicator.textContent = max_price.value + " €";
 
+        // Attesa click per filtro prezzo massimo
+        max_price.addEventListener("input", function(){
+            let radio_clicked = document.querySelector("input[type=\"radio\"]:checked").id;
+            max_price_indicator.textContent = max_price.value + " €";
+            getAllFilter(radio_clicked, max_price.value);   // richiamo la funzione passando il radio button spuntato e il valore massimo del prezzo
+        });
+
+        // ascolto per reset dei filtri
+        filter_reset.addEventListener("click", function(){
+            max_price.value = max_price.max;
+            max_price_indicator.textContent = max_price.value + " €";
+            radio_clicked = "all";
+            // TODO resettare selezione radio button
+            console.log(radio_all_regions.checked);
+            getAllFilter(radio_clicked, max_price.value);
+        });
+
+    })  // END Fetch
