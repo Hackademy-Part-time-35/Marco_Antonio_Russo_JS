@@ -9,7 +9,6 @@ let chevron_accordion = document.querySelectorAll(".accordion-button .fa-chevron
 let regions = [];
 let region_accordion = document.querySelector("#region");
 let radio_regions;
-let radio_all_regions = document.querySelector("#all");
 let checked_radio;
 let max_price = document.querySelector("#maxprice");
 let max_price_indicator = document.querySelector("#max_price_indicator");
@@ -93,11 +92,13 @@ fetch("../../data/elenco_immobili.json")
         // funzione per creare i radio button
         function radioRegion(){
 
-            data.forEach(ads =>{
-                if(!regions.includes(ads.regione)){
-                    regions.push(ads.regione);
-                };
-            });
+            // data.forEach(ads =>{
+            //     if(!regions.includes(ads.regione)){
+            //         regions.push(ads.regione);
+            //     };
+            // });
+
+            regions = [...new Set(data.map(el => el.regione))] // rifattorizzazione del codie commentato sopra
 
             regions.forEach(region =>{
                 region_accordion.innerHTML += `
@@ -113,7 +114,7 @@ fetch("../../data/elenco_immobili.json")
         };
 
 
-/* VECCHIE FUNZIONI FILTRI SINGOLI
+/* FUNZIONI DEPRECATE FILTRI SINGOLI
         // funzione per creazione array con la regione selezionata
         function getFilteredRegions(region_id){
             let filtered_array_region = [];
@@ -204,10 +205,11 @@ fetch("../../data/elenco_immobili.json")
 
         // ascolto per reset dei filtri
         filter_reset.addEventListener("click", function(){
+            let radio_all_regions = document.querySelector("#all");
             max_price.value = max_price.max;
             max_price_indicator.textContent = max_price.value + " €";
             radio_clicked = "all";
-            // TODO resettare selezione radio button
+            radio_all_regions.checked = true;
             console.log(radio_all_regions.checked);
             getAllFilter(radio_clicked, max_price.value);
         });
