@@ -92,12 +92,13 @@ fetch("../../data/elenco_immobili.json")
         // funzione per creare i radio button
         function radioRegion(){
 
+            /* Codice rifattorizzato
             // data.forEach(ads =>{
             //     if(!regions.includes(ads.regione)){
             //         regions.push(ads.regione);
             //     };
             // });
-
+            */
             regions = [...new Set(data.map(el => el.regione))] // rifattorizzazione del codie commentato sopra
 
             regions.forEach(region =>{
@@ -116,26 +117,26 @@ fetch("../../data/elenco_immobili.json")
 
 /* FUNZIONI DEPRECATE FILTRI SINGOLI
         // funzione per creazione array con la regione selezionata
-        function getFilteredRegions(region_id){
-            let filtered_array_region = [];
+        // function getFilteredRegions(region_id){
+        //     let filtered_array_region = [];
             
-            if(region_id === "all"){
-                // getAllFilter(data);
-                return [{regione: "all"}];
-            } else {
-                filtered_array_region = data.filter(el => el.regione === region_id);
-                // getAllFilter(filtered_array_region,Infinity);
-                return filtered_array_region;
-            };
-        };
+        //     if(region_id === "all"){
+        //         // getAllFilter(data);
+        //         return [{regione: "all"}];
+        //     } else {
+        //         filtered_array_region = data.filter(el => el.regione === region_id);
+        //         // getAllFilter(filtered_array_region,Infinity);
+        //         return filtered_array_region;
+        //     };
+        // };
 
-        // funzione per creazione array con il prezzo massimo selezionato
-        function getFilteredPrice(price){
-            let filtered_array_price = [];
-                filtered_array_price = data.filter(el => el.prezzo <= price);
-                // getAllFilter("", filtered_array_price);
-                return filtered_array_price;
-        };
+        // // funzione per creazione array con il prezzo massimo selezionato
+        // function getFilteredPrice(price){
+        //     let filtered_array_price = [];
+        //         filtered_array_price = data.filter(el => el.prezzo <= price);
+        //         // getAllFilter("", filtered_array_price);
+        //         return filtered_array_price;
+        // };
         
 */
 
