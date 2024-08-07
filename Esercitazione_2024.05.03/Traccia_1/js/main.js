@@ -4,10 +4,11 @@ let input_name = document.querySelector("#name");
 let input_number = document.querySelector("#number");
 let input_email = document.querySelector("#email");
 let radio = document.querySelectorAll(`input[type="radio"]`);
-let inputs = document.querySelectorAll("input");
+let inputs = document.querySelectorAll("input:not([type=radio])");
 let labels = document.querySelectorAll("label");
 let cancel = document.querySelector("#cancel")
 let close_offcanvas = document.querySelector("i")
+
 
 let agenda = {
     // inizializzazione contatti
@@ -93,6 +94,7 @@ let agenda = {
             let gender_check;
             radio.forEach((elem) =>{
                 if(elem.checked){
+                    console.log(elem.value);
                     gender_check = elem.value;
                 }   
             });
@@ -161,3 +163,4 @@ send_btn.addEventListener("click", function(){
 cancel.addEventListener("click" , function(){
     agenda.clearInputs();
 });
+
