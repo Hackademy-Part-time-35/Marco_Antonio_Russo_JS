@@ -116,7 +116,7 @@ article:hover ~ article:not(:hover){
 
 .offcanvas-body>input[type="number"]::-webkit-outer-spin-button,
 .offcanvas-body>input[type="number"]::-webkit-inner-spin-button{
-   display: none;
+display: none;
 }
 
 
