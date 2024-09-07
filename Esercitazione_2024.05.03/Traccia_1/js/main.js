@@ -9,7 +9,6 @@ let labels = document.querySelectorAll("label");
 let cancel = document.querySelector("#cancel")
 let close_offcanvas = document.querySelector("i")
 
-
 let agenda = {
     // inizializzazione contatti
     contacts : [
@@ -94,7 +93,7 @@ let agenda = {
             let gender_check;
             radio.forEach((elem) =>{
                 if(elem.checked){
-                    console.log(elem.value);
+                    // console.log(elem.value);
                     gender_check = elem.value;
                 }   
             });
@@ -103,7 +102,7 @@ let agenda = {
             {
                 name: input_name.value,
                 tel: input_number.value,
-                email: input_email.value,
+                mail: input_email.value,
                 gender: gender_check,
             }
         );
